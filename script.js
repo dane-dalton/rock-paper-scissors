@@ -1,14 +1,13 @@
-let userWins = 0
 alert('Welcome! Proceed to play some good \'ole fashioned Rock, Paper, Scissors!')
 
 playSeries()
 
 function playSeries() {
-    userWins = 0
+    let userWins = 0
     let playAgain = 'y'
 
     for(let i = 0; i < 5; i++) {
-        userWins = playGame()
+        userWins += playGame()
         console.log(userWins)
     }
     if(userWins >= 3) playAgain = prompt(`You came out with ${userWins} wins in the Best of 5! Play again? (y/n)`, 'y')
@@ -44,10 +43,9 @@ function playGame() {
 
     let decision = userVsComputer(userChoice, computerChoice)
 
-    userWins += decision[1]
-
     alert(decision[0])
     alert('Play again!')
+    return decision[1]
 }
 
 
