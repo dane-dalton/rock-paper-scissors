@@ -3,17 +3,20 @@ alert('Welcome! Proceed to play some good \'ole fashioned Rock, Paper, Scissors!
 playSeries()
 
 function playSeries() {
-    let userWins = 0
     let playAgain = 'y'
+    let userWins
 
-    for(let i = 0; i < 5; i++) {
-        userWins += playGame()
-        console.log(userWins)
+    while(playAgain === 'y') {
+        userWins = 0
+
+        for(let i = 0; i < 5; i++) {
+            userWins += playGame()
+            console.log(userWins)
+        }
+
+        if(userWins >= 3) playAgain = prompt(`You came out with ${userWins} wins in the Best of 5! Play again? (y/n)`, 'y')
+        else playAgain = prompt(`${userWins} wins??? You lost. Robots cheat anyway. Play again? (y/n)`, 'y')
     }
-    if(userWins >= 3) playAgain = prompt(`You came out with ${userWins} wins in the Best of 5! Play again? (y/n)`, 'y')
-    else playAgain = prompt(`${userWins} wins??? You lost. Robots cheat anyway. Play again? (y/n)`, 'y')
-    
-    if(playAgain === 'y') playSeries()
 }
 
 
@@ -47,7 +50,6 @@ function playGame() {
     alert('Play again!')
     return decision[1]
 }
-
 
 
 
