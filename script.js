@@ -19,9 +19,9 @@ function playSeries() {
 
 function playGame() {
     let userChoice = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
-    if (userChoice === '' || userChoice === null) {
+    while (userChoice === '' || userChoice === null) {
         alert('Game cancelled. Proceed to play again.')
-        playGame()
+        userChoice = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
     }
 
     userChoice = capitalize(userChoice)
@@ -31,9 +31,9 @@ function playGame() {
     while(userChoice === computerChoice) {
         alert('Game tied. Run it back!')
         userChoice = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
-        if (userChoice === '' || userChoice === null) {
+        while (userChoice === '' || userChoice === null) {
             alert('Game cancelled. Proceed to play again.')
-            playGame()
+            userChoice = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
         }
 
         userChoice = capitalize(userChoice)
@@ -66,16 +66,23 @@ function userVsComputer(user, computer) {
             else return ['You Win! Scissors beats Paper.', 1]
             break;
         default: 
-            alert('Something went very wrong. Play again.')
-            return playGame()
+            alert('Something went very wrong. Restart the page.')
     }
 }
 
 function validChoice(userWord) {
-    if (userWord === 'Rock' || userWord === 'Paper' || userWord === 'Scissors') return userWord
+    while(true) {
+        if (userWord === 'Rock' || userWord === 'Paper' || userWord === 'Scissors') return userWord
 
-    alert('Invalid choice, check for spelling errors and play again.')
-    playGame()
+        alert('Invalid choice, check for spelling errors and play again.')
+        userWord = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
+        while (userWord === '' || userWord === null) {
+            alert('Game cancelled. Proceed to play again.')
+            userWord = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
+        }
+
+        userWord = capitalize(userWord)
+    }
 }
 
 function capitalize(userWord) {
