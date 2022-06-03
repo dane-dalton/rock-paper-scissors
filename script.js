@@ -23,8 +23,7 @@ function playSeries() {
 function playGame() {
     let userChoice = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
     while (userChoice === '' || userChoice === null) {
-        alert('Game cancelled. Proceed to play again.')
-        userChoice = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
+        alert('Game cancelled. Restart the page to play again.')
     }
 
     userChoice = capitalize(userChoice)
@@ -35,8 +34,7 @@ function playGame() {
         alert('Game tied. Run it back!')
         userChoice = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
         while (userChoice === '' || userChoice === null) {
-            alert('Game cancelled. Proceed to play again.')
-            userChoice = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
+            alert('Game cancelled. Restart the page to play again.')
         }
 
         userChoice = capitalize(userChoice)
@@ -50,6 +48,7 @@ function playGame() {
     alert('Play again!')
     return decision[1]
 }
+
 
 
 
