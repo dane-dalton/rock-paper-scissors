@@ -43,16 +43,62 @@ nav a:hover {
 
 .header-scoreboard {
     display: flex;
-    
+    justify-content: center;
 }
 
-button {
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-score,
+.cpu-score {
+    text-align: center;
+}
+
+.prompt-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.rps-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 36px;
+}
+
+.rps-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rps-user,
+.rps-cpu {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn {
+    margin: 8px;
     width: 150px;
     aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-img {
+.btn img {
     display: block;
     width: 100px;
     aspect-ratio: 1;
+    margin: 0;
+}
+
+.footer-content {
+    padding: 8px;
 }
