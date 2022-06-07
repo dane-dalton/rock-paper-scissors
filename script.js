@@ -14,10 +14,8 @@ function gamePlay () {
     buttons.forEach((button) => {
         button.addEventListener('click', (e) => {
             let userSelection = e.target.id
-            console.log('User Selection: ' + userSelection)
     
             let cpuSelection = computerMove()
-            console.log('CPU Selection: ' + cpuSelection)
     
             if(userSelection === cpuSelection) {
                 promptBox.textContent = 'Tie!'
