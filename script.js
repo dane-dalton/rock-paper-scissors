@@ -1,51 +1,82 @@
-//alert('Welcome! Proceed to play some good \'ole fashioned Rock, Paper, Scissors!')
+const promptBox = document.querySelector('.prompt-content')
+const userCounter = document.querySelector('.user-score')
+const cpuCounter = document.querySelector('.cpu-score')
 
-//playSeries()
 
-function playSeries() {
-    let playAgain = 'y'
-    let userWins
 
-    while(playAgain === 'y') {
-        userWins = 0
 
-        // for(let i = 0; i < 5; i++) {
-             userWins += playGame()
-        // }
+beginningPrompt()
 
-        if(userWins >= 3) playAgain = prompt(`You came out with ${userWins} wins in the Best of 5! Play again? (y/n)`, 'y')
-        else playAgain = prompt(`${userWins} wins??? You lost. Robots cheat anyway. Play again? (y/n)`, 'y')
+firstToFive()
+//firstToFive()
+
+
+
+function beginningPrompt() {
+    promptBox.textContent = "Welcome! Ready to play some good \'ole fashioned Rock, Paper, Scissors?"
+
+    setTimeout(() => {
+        promptBox.textContent = "This is a first to 5 series"
+    }, 2000)
+
+    setTimeout(() => {
+        promptBox.textContent = "Select rock, paper, or scissors to compete against the computer"
+    }, 4000)
+}
+
+function firstToFive() {
+    let keepGoing = true
+    let userWins = userCounter.textContent
+    let cpuWins = cpuCounter.textContent
+    let userWinsInt = parseInt(userWins)
+    let cpuWinsInt = parseInt(cpuWins)
+
+    userWins = '0'
+    cpuWins = '0'
+
+    while(keepGoing) {
+
+        [userWinsInt, cpuWinsInt] = playGame(userWins, cpuWins)
+        
+        userCounter.textContent = userWinsInt
+        cpuCounter.textContent = cpuWinsInt
+        
+
+        if (userWinsInt >= 5) {
+            keepGoing = false
+            promptBox.textContent = "Congrats! You achieved 5 wins before that pesky computer!"
+        }
+        if (cpuWinsInt >= 5) {
+            keepGoing = false
+            promptBox.textContent = "Uh oh! Looks like you lost to the computer. It was probably cheating anyway..."
+        }
     }
 }
 
 
-function playGame() {
-    let userChoice = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
-    while (userChoice === '' || userChoice === null) {
-        alert('Game cancelled. Restart the page to play again.')
-    }
+function playGame(userW, cpuW) {
 
-    userChoice = capitalize(userChoice)
-    userChoice = validChoice(userChoice)
-    computerChoice = computerPlay()
+    //transform win counter from string to int to avoid concat
+    let userInt = parseInt(userW)
+    let cpuInt = parseInt(cpuW)
+    let gameDecision
+
+    [userInt, cpuInt] = userMove()
+
+    //computerChoice = computerMove()
     
-    while(userChoice === computerChoice) {
-        alert('Game tied. Run it back!')
-        userChoice = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
-        while (userChoice === '' || userChoice === null) {
-            alert('Game cancelled. Restart the page to play again.')
-        }
+    //get new choices when a tie occurs
+    // while(userChoice === computerChoice) {
+    //     promptBox.textContent = 'Tie! Pick again.'
 
-        userChoice = capitalize(userChoice)
-        userChoice = validChoice(userChoice)
-        computerChoice = computerPlay()
-    }
+    //     userChoice = userMove()
 
-    let decision = userVsComputer(userChoice, computerChoice)
+    //     //computerChoice = computerMove()
+    // }
 
-    alert(decision[0])
-    alert('Play again!')
-    return decision[1]
+    //let decision = userVsComputer(userChoice, computerChoice)
+
+    return [userInt, cpuInt]
 }
 
 
@@ -54,43 +85,58 @@ function playGame() {
 function userVsComputer(user, computer) {
     switch (user) {
         case 'Rock': 
-            if (computer === 'Paper') return ['You Lose. Paper beats Rock.', 0]
-            else return ['You Win! Rock beats Scissors.', 1]
+            if (computer === 'Paper') {
+                promptBox.textContent = 'You Lose. Paper beats Rock'
+                return [0, 1]
+            } else {
+                promptBox.textContent = 'You Win! Rock beats Scissors.'
+                return [1, 0]
+            } 
             break;
         case 'Paper':
-            if (computer === 'Scissors') return ['You Lose. Scissors beats Paper.', 0]
-            else return ['You Win! Paper beats Rock.', 1]
+            if (computer === 'Scissors') {
+                promptBox.textContent = 'You Lose. Scissors beats Paper.'
+                return [0, 1]
+            } else {
+                promptBox.textContent = 'You Win! Paper beats Rock.'
+                return [1, 0]
+            } 
             break;
         case 'Scissors':
-            if (computer === 'Rock') return ['You Lose. Rock beats Scissors.', 0]      
-            else return ['You Win! Scissors beats Paper.', 1]
+            if (computer === 'Rock') {
+                promptBox.textContent = 'You Lose. Rock beats Scissors.'
+                return [0, 1]
+            } else {
+                promptBox.textContent = 'You Win! Scissors beats Paper.'
+                return [1, 0]
+            }
             break;
         default: 
             alert('Something went very wrong. Restart the page.')
     }
 }
 
-function validChoice(userWord) {
-    while(true) {
-        if (userWord === 'Rock' || userWord === 'Paper' || userWord === 'Scissors') return userWord
+function userMove() {
+    const buttons = document.querySelectorAll('.user-btn')
 
-        alert('Invalid choice, check for spelling errors and play again.')
-        userWord = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
-        while (userWord === '' || userWord === null) {
-            alert('Game cancelled. Proceed to play again.')
-            userWord = prompt('Please choose "Rock", "Paper", or "Scissors": ', '')
-        }
+    buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            let userSelection = e.target.id
+            let computerSelection = computerMove()
 
-        userWord = capitalize(userWord)
-    }
+            while(userSelection === computerSelection) {
+                promptBox.textContent = 'Tie! Pick again.'
+                userSelection = e.target.id
+                computerSelection = computerMove()
+            }
+            let winner = userVsComputer(userSelection, computerSelection)
+
+            return winner
+        })
+    })
 }
 
-function capitalize(userWord) {
-    userWord = userWord.charAt(0).toUpperCase() + userWord.slice(1).toLowerCase()
-    return userWord
-}
-
-function computerPlay() {
+function computerMove() {
     const compOptions = ['Rock', 'Paper', 'Scissors']
     let randomSelection = Math.floor(Math.random() * compOptions.length)
     let select = compOptions[randomSelection]
