@@ -1,207 +1,210 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Helvetica, sans-serif;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 nav {
-    background-color: hsl(53, 57%, 82%);
+  background-color: hsl(53, 57%, 82%);
+  height: 8rem;
 }
 
-nav a {
-    display: inline-block;
-    margin: 0;
-    padding: 8px;
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
+nav p {
+  display: inline-block;
+  margin: 0;
+  padding: 8px;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
 }
 
-nav a:hover {
-    color: gray;
+nav p:hover {
+  color: gray;
 }
 
 .header-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .header-title {
-    font-size: 48px;
-    font-weight: bold;
-    border: 4px solid hsl(288, 83%, 53%);
-    border-radius: 5px;
-    box-shadow: 0 0 15px hsl(288, 83%, 53%);
-    padding: 16px 8px;
+  font-size: 48px;
+  font-weight: bold;
+  border: 4px solid hsl(288, 83%, 53%);
+  border-radius: 5px;
+  box-shadow: 0 0 15px hsl(288, 83%, 53%);
+  padding: 16px 8px;
 }
 
 .header-scoreboard {
-    display: flex;
-    justify-content: center;
-    gap: 2px;
+  display: flex;
+  justify-content: center;
+  gap: 2px;
 }
 
 .scoreboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-width: 3px;
-    border-style: solid;
-    border-radius: 5px;
-    flex: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 5px;
+  flex: auto;
 }
 
 .title {
-    font-size: 32px;
+  font-size: 32px;
 }
 
 .score {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .user-scoreboard {
-    border-color: red;
-    box-shadow: 0 0 10px red;
+  border-color: red;
+  box-shadow: 0 0 10px red;
 }
 
 .cpu-scoreboard {
-    border-color: blue;
-    box-shadow: 0 0 10px blue;
+  border-color: blue;
+  box-shadow: 0 0 10px blue;
 }
 
 .user-score,
 .cpu-score {
-    text-align: center;
+  text-align: center;
 }
 
 .prompt-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .prompt-content {
-    width: 60%;
-    aspect-ratio: 3;
-    padding: 12px;
-    font-size: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  width: 60%;
+  aspect-ratio: 3;
+  padding: 12px;
+  font-size: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .prompt-border {
-    border: 4px solid hsl(288, 83%, 53%);
-    border-radius: 5px;
-    box-shadow: 0 0 10px hsl(288, 83%, 53%);
+  border: 4px solid hsl(288, 83%, 53%);
+  border-radius: 5px;
+  box-shadow: 0 0 10px hsl(288, 83%, 53%);
 }
 
 .playAgain {
-    font-size: 24px;
-    margin-bottom: 12px;
-    padding: 4px;
-    width: 64px;
-    background-color: white;
-    border: 3px solid hsl(288, 83%, 53%);
-    border-radius: 5px;
-    box-shadow: 0 0 10px hsl(288, 83%, 53%);
+  font-size: 24px;
+  margin-bottom: 12px;
+  padding: 4px;
+  width: 64px;
+  background-color: white;
+  border: 3px solid hsl(288, 83%, 53%);
+  border-radius: 5px;
+  box-shadow: 0 0 10px hsl(288, 83%, 53%);
 }
 
 .rps-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 36px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 36px;
 }
 
 .rps-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-style: solid;
-    border-width: 4px;
-    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 10px;
 }
 
 .rps-content-user {
-    border-color: red;
-    box-shadow: 0 0 15px red;
+  border-color: red;
+  box-shadow: 0 0 15px red;
 }
 
 .rps-content-cpu {
-    border-color: blue;
-    box-shadow: 0 0 15px blue;
+  border-color: blue;
+  box-shadow: 0 0 15px blue;
 }
 
 .rps-user-title,
 .rps-cpu-title {
-    font-size: 36px;
-    padding: 16px;
+  font-size: 36px;
+  padding: 16px;
 }
 
 .rps-user,
 .rps-cpu {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .btn {
-    margin: 8px;
-    width: 150px;
-    aspect-ratio: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 1em;
+  margin: 8px;
+  width: 150px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 1em;
 }
 
 .user-btn {
-    border-color: red;
-    box-shadow: 0 0 5px red;
+  border-color: red;
+  box-shadow: 0 0 5px red;
 }
 
 .cpu-btn {
-    border-color: blue;
-    box-shadow: 0 0 5px blue;
+  border-color: blue;
+  box-shadow: 0 0 5px blue;
 }
 
 .btn img {
-    display: block;
-    width: 140px;
-    aspect-ratio: 1;
-    margin: 0;
-    border-radius: 1em;
+  display: block;
+  width: 140px;
+  aspect-ratio: 1;
+  margin: 0;
+  border-radius: 1em;
 }
 
 .footer-container {
-    background-color: hsl(0, 0%, 75%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: hsl(0, 0%, 75%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-content {
-    padding: 8px;
-    font-size: 16px;
-    display: flex;
-    gap: 36px;
+  padding: 8px;
+  font-size: 16px;
+  display: flex;
+  gap: 36px;
 }
