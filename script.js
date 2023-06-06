@@ -1,3 +1,16 @@
+// import equation from "./testData"
+
+const equation = {
+  myEquation: {
+    question:
+      "$17 + 12 = \square - 7$. Find the number that belongs in the box.",
+  },
+}
+
+
+const { myEquation: { question } } = equation
+const regex = /\\/g
+
 const body = document.querySelector("body")
 const header = document.querySelector(".header-container")
 const rps = document.querySelector(".rps-container")
@@ -5,11 +18,22 @@ const promptBox = document.querySelector(".prompt-content")
 const userCounter = document.querySelector(".user-score")
 const cpuCounter = document.querySelector(".cpu-score")
 const buttons = document.querySelectorAll(".user-btn")
+const navigate = document.querySelector(".navigate")
 
 promptBox.textContent =
   "Welcome! Play in a Best of 5 Series of Rock, Paper, Scissors against our finest robot on the market!"
 
-generateMathjaxScript()
+
+let plsWork = question.replace(regex, "\\\\")
+// let nowPls = plsWork.join("\\\\")
+
+console.log(plsWork)
+
+const mathJaxTestLine = document.createElement("div")
+mathJaxTestLine.innerText = question
+navigate.appendChild(mathJaxTestLine)
+
+// generateMathjaxScript()
 gamePlay()
 
 function generateMathjaxScript() {
